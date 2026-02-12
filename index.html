@@ -51,9 +51,15 @@
                 transform: translateX(-50%);
             }
         }
-        .japanese-vertical {
-            writing-mode: vertical-rl;
-            text-orientation: upright;
+        /* 滑動浮現動畫設定 */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-up.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
@@ -92,8 +98,7 @@
 
         <!-- ================= Station 1: 鹿兒島 ================= -->
         <section id="day1" class="scroll-mt-24">
-            <!-- Section Header -->
-            <div class="mb-10 text-center relative">
+            <div class="mb-10 text-center relative fade-in-up">
                 <div class="inline-block bg-bengara text-white text-xs font-bold px-3 py-1 mb-3 tracking-widest">第一站</div>
                 <h2 class="text-3xl md:text-4xl font-bold text-sumi mb-2">鹿兒島 <span class="text-xl md:text-2xl font-normal text-gray-500 ml-2">Kagoshima</span></h2>
                 <p class="text-lg text-bengara font-bold tracking-widest">（仙巖園+櫻島）山海慢遊全日版</p>
@@ -113,13 +118,13 @@
 
             <!-- Timeline -->
             <div class="relative timeline-line">
-                <!-- Item 1 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">09:00~09:30</span>
+                <!-- Item 1 (無圖片 - 交通移動) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">09:00~09:30</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-bengara rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-bengara">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">下船 & 搭計程車</h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行動：</strong> 早餐後下船，搭計程車直奔「仙巖園」<a href="https://www.google.com/maps/search/?api=1&query=仙巖園" target="_blank" class="inline-flex items-center text-bengara hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>。</p>
@@ -128,29 +133,36 @@
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="relative z-10 md:flex items-center flex-row-reverse mb-8">
-                    <div class="md:w-1/2 md:pl-12 md:text-left mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">09:30~12:30</span>
+                <!-- Item 2 (有圖片 - 仙巖園) -->
+                <div class="relative z-10 md:flex items-center flex-row-reverse mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pl-12 md:text-left mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-start w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">09:30~12:30</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 senganen.jpg -->
+                            <img src="images/senganen.jpg" alt="仙巖園" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-bengara rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pr-12 pl-12">
+                    <div class="md:w-1/2 md:pr-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-r-4 md:border-l-0 border-l-4 border-bengara">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap md:justify-end">仙巖園 & 午餐 (篤姬庭園) <a href="https://www.google.com/maps/search/?api=1&query=仙巖園" target="_blank" class="ml-2 text-bengara hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行程：</strong> 參觀薩摩藩主的別墅，這裡是拍攝櫻島最美的地方。</p>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>午餐：</strong> 安排在園內的「櫻華亭」或「松風軒」享用午餐。</p>
                             <p class="text-bengara text-sm font-bold"><strong>推薦：</strong> 鹿兒島黑豚涮涮鍋或黑豚炸豬排，環境高雅。</p>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/senganen.jpg" alt="仙巖園" class="w-full h-40 object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">12:30~13:00</span>
+                <!-- Item 3 (無圖片 - 交通移動) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">12:30~13:00</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-bengara rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-bengara">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">移動到渡輪碼頭</h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行動：</strong> 請園區叫計程車，前往「鹿兒島港櫻島渡輪碼頭」<a href="https://maps.app.goo.gl/1eDXERGyRvWDovUz9" target="_blank" class="inline-flex items-center text-bengara hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>。</p>
@@ -159,13 +171,17 @@
                     </div>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="relative z-10 md:flex items-center flex-row-reverse mb-8">
-                    <div class="md:w-1/2 md:pl-12 md:text-left mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">13:00~15:30</span>
+                <!-- Item 4 (有圖片 - 櫻島足湯) -->
+                <div class="relative z-10 md:flex items-center flex-row-reverse mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pl-12 md:text-left mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-start w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">13:00~15:30</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 sakurajima.jpg -->
+                            <img src="images/sakurajima.jpg" alt="櫻島渡輪與足湯" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-bengara rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pr-12 pl-12">
+                    <div class="md:w-1/2 md:pr-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-r-4 md:border-l-0 border-l-4 border-bengara">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap md:justify-end">櫻島渡輪 & 溶岩足湯 <a href="https://www.google.com/maps/search/?api=1&query=櫻島溶岩名遊步道足湯" target="_blank" class="ml-2 text-bengara hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <ul class="text-gray-600 text-sm leading-relaxed space-y-2 text-left">
@@ -173,17 +189,20 @@
                                 <li><strong>足湯：</strong> 抵達後步行 5-8 分鐘至「櫻島溶岩名遊步道足湯」。這是日本最大免費足湯(100公尺)，請帶小毛巾。</li>
                                 <li><strong>回程：</strong> 泡完腳後搭渡輪返回鹿兒島市區。</li>
                             </ul>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/sakurajima.jpg" alt="櫻島渡輪與足湯" class="w-full h-40 object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 5 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">15:30~16:00</span>
+                <!-- Item 5 (無圖片 - 交通移動) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">15:30~16:00</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-bengara rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-bengara">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">移動到市區</h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行動：</strong> 從鹿兒島港搭計程車前往「天文館通」<a href="https://maps.app.goo.gl/q96thAScc33kWtK87" target="_blank" class="inline-flex items-center text-bengara hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>。</p>
@@ -192,30 +211,37 @@
                     </div>
                 </div>
 
-                <!-- Item 6 -->
-                <div class="relative z-10 md:flex items-center flex-row-reverse mb-8">
-                    <div class="md:w-1/2 md:pl-12 md:text-left mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">16:00~17:30</span>
+                <!-- Item 6 (有圖片 - 天文館通) -->
+                <div class="relative z-10 md:flex items-center flex-row-reverse mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pl-12 md:text-left mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-start w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">16:00~17:30</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 tenmonkan.jpg -->
+                            <img src="images/tenmonkan.jpg" alt="天文館通" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-bengara rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pr-12 pl-12">
+                    <div class="md:w-1/2 md:pr-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-r-4 md:border-l-0 border-l-4 border-bengara">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap md:justify-end">天文館通 (下午茶 & 逛街) <a href="https://maps.app.goo.gl/q96thAScc33kWtK87" target="_blank" class="ml-2 text-bengara hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <ul class="text-gray-600 text-sm leading-relaxed space-y-1 text-left list-disc list-inside">
                                 <li>吃「天文館むじゃき」<a href="https://www.google.com/maps/search/?api=1&query=天文館むじゃき" target="_blank" class="inline-flex items-center text-bengara hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-3 h-3"></i></a> 的白熊冰。</li>
                                 <li>在有屋頂的商店街輕鬆逛逛藥妝店或土產店。</li>
                             </ul>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/tenmonkan.jpg" alt="天文館通" class="w-full h-40 object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 7 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">17:30~18:30</span>
+                <!-- Item 7 (無圖片 - 晚餐) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">17:30~18:30</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-bengara rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-bengara">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">晚餐 (或摩天輪)</h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-2"><strong>選擇 A (美食)：</strong> 在天文館通找一家好評的餐廳吃早晚餐（如：吾愛人、黑豚料理）。</p>
@@ -224,15 +250,15 @@
                     </div>
                 </div>
 
-                <!-- Item 8 -->
-                <div class="relative z-10 md:flex items-center flex-row-reverse mb-8">
-                    <div class="md:w-1/2 md:pl-12 md:text-left mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">18:30~19:00</span>
+                <!-- Item 8 (無圖片 - 準備登船) -->
+                <div class="relative z-10 md:flex items-center flex-row-reverse mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pl-12 md:text-left mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-start w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">18:30~19:00</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-bengara rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pr-12 pl-12">
+                    <div class="md:w-1/2 md:pr-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-r-4 md:border-l-0 border-l-4 border-bengara">
-                            <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap md:justify-end">準備登船 - 馬林港 <a href="https://maps.app.goo.gl/D2sEELnUm5UHHjQs6" target="_blank" class="ml-2 text-bengara hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
+                            <h3 class="text-xl font-bold mb-2 text-bengara flex items-center flex-wrap md:justify-end">準備登船 - 馬林港 <a href="https://maps.app.goo.gl/D2sEELnUm5UHHjQs6" target="_blank" class="ml-2 text-bengara hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行動：</strong> 搭計程車回港口，最後登船建議時間為 19:00。</p>
                             <p class="text-gray-500 text-sm"><strong>車資：</strong> 約 ¥2,500~¥3,000。</p>
                         </div>
@@ -244,8 +270,7 @@
 
         <!-- ================= Station 2: 熊本 ================= -->
         <section id="day2" class="scroll-mt-24 pt-12 border-t border-gray-300">
-            <!-- Section Header -->
-            <div class="mb-10 text-center relative">
+            <div class="mb-10 text-center relative fade-in-up">
                 <div class="inline-block bg-matcha text-white text-xs font-bold px-3 py-1 mb-3 tracking-widest">第二站</div>
                 <h2 class="text-3xl md:text-4xl font-bold text-sumi mb-2">熊本 <span class="text-xl md:text-2xl font-normal text-gray-500 ml-2">Kumamoto</span></h2>
                 <p class="text-lg text-matcha font-bold tracking-widest">（八代）慢活悠閒行程</p>
@@ -265,77 +290,144 @@
 
             <!-- Timeline -->
             <div class="relative timeline-line">
-                <!-- Item 1 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">09:00~09:30</span>
+                <!-- Item 1 (無圖片 - 交通移動) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">09:00~09:30</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-matcha rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-matcha">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">下船 & 搭計程車</h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行動：</strong> 吃飽睡飽後下船，直接上排班計程車。</p>
-                            <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>目的地：</strong> 「八代城跡」<a href="https://www.google.com/maps/search/?api=1&query=八代城跡" target="_blank" class="inline-flex items-center text-matcha hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>或「八代宮」<a href="https://www.google.com/maps/search/?api=1&query=八代宮" target="_blank" class="inline-flex items-center text-matcha hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>（兩者在同一處）。</p>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>目的地：</strong> 「八代城跡」<a href="https://www.google.com/maps/search/?api=1&query=八代城跡" target="_blank" class="inline-flex items-center text-matcha hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>或「八代宮」<a href="https://www.google.com/maps/search/?api=1&query=八代宮" target="_blank" class="inline-flex items-center text-matcha hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>。</p>
                             <p class="text-gray-500 text-sm"><strong>車程/車資：</strong> 約 15-20 分鐘，車資約 ¥3,000。</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="relative z-10 md:flex items-center flex-row-reverse mb-8">
-                    <div class="md:w-1/2 md:pl-12 md:text-left mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">09:30~10:30</span>
+                <!-- Item 2 (有圖片 - 八代城跡) -->
+                <div class="relative z-10 md:flex items-center flex-row-reverse mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pl-12 md:text-left mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-start w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">09:30~10:30</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 yatsushiro_castle.jpg -->
+                            <img src="images/yatsushiro_castle.jpg" alt="八代城跡" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-matcha rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pr-12 pl-12">
+                    <div class="md:w-1/2 md:pr-12 pl-12 w-full">
+                        <div class="bg-white p-5 rounded-lg shadow-sm border-r-4 md:border-l-0 border-l-4 border-matcha">
+                            <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap md:justify-end">八代城跡 <a href="https://www.google.com/maps/search/?api=1&query=八代城跡" target="_blank" class="mx-2 text-matcha hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a> & 八代宮 <a href="https://www.google.com/maps/search/?api=1&query=八代宮" target="_blank" class="ml-2 text-matcha hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-2"><strong>八代城跡：</strong> 平山城，天守閣已不在但石垣壯觀、護城河環繞，步道平坦。春天可能有早開櫻花或梅花。</p>
+                            <p class="text-gray-600 text-sm leading-relaxed"><strong>八代宮：</strong> 位於城內的神社，供奉懷良親王，環境清幽莊嚴。</p>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/yatsushiro_castle.jpg" alt="八代城跡" class="w-full h-40 object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 3 (有圖片 - 松濱軒) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">10:30~11:30</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 shohinken.jpg -->
+                            <img src="images/shohinken.jpg" alt="松濱軒" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
+                    </div>
+                    <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-matcha rounded-full border-4 border-washi"></div>
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
+                        <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-matcha relative overflow-hidden">
+                            <div class="absolute top-0 right-0 bg-yellow-400 text-sumi text-xs font-bold px-2 py-1 transform translate-x-1 translate-y-1 rotate-12">強烈推薦</div>
+                            <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">松濱軒 (Shohinken) <a href="https://www.google.com/maps/search/?api=1&query=松濱軒" target="_blank" class="ml-2 text-matcha hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-2"><strong>交通：</strong> 距八代城跡步行約 10 分鐘 (搭車起步價)。</p>
+                            <p class="text-gray-600 text-sm leading-relaxed mb-2"><strong>特色：</strong> 八代城主私人御茶屋與庭園，被稱為「九州的小桂離宮」。遊客少，松樹池塘雅緻。</p>
+                            <p class="text-gray-500 text-sm"><strong>門票：</strong> 約 ¥500。</p>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/shohinken.jpg" alt="松濱軒" class="w-full h-40 object-cover">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Item 4 (有圖片 - 鰻魚飯) -->
+                <div class="relative z-10 md:flex items-center flex-row-reverse mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pl-12 md:text-left mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-start w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">11:30~13:00</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 yatsushiro_lunch.jpg -->
+                            <img src="images/yatsushiro_lunch.jpg" alt="鰻魚飯" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
+                    </div>
+                    <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-matcha rounded-full border-4 border-washi"></div>
+                    <div class="md:w-1/2 md:pr-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-r-4 md:border-l-0 border-l-4 border-matcha">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap md:justify-end">午餐時間 (八代市區) <a href="https://maps.app.goo.gl/rCooL3iyro7ih7DXA" target="_blank" class="ml-2 text-matcha hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-2"><strong>地點：</strong> 城跡附近就是八代市中心（本町商店街周邊）。</p>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>推薦 - 鰻魚飯：</strong> 八代鰻魚有名，附近有幾家老字號鰻魚店。</p>
                             <p class="text-gray-600 text-sm leading-relaxed"><strong>推薦 - 日式定食：</strong> 商店街內也有許多烏龍麵或日式定食。</p>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/yatsushiro_lunch.jpg" alt="鰻魚飯" class="w-full h-40 object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 5 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">13:00~14:00</span>
+                <!-- Item 5 (有圖片 - 商店街) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">13:00~14:00</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 yatsushiro_market.jpg -->
+                            <img src="images/yatsushiro_market.jpg" alt="伴手禮" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-matcha rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-matcha">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">採買 & 返回港口</h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-2"><strong>採買：</strong> 在商店街買伴手禮 (如：晚白柚加工品、日式點心)。(13:00~13:30)</p>
                             <p class="text-gray-600 text-sm leading-relaxed"><strong>回程：</strong> 攔計程車返回「くまモンポート八代」<a href="https://www.google.com/maps/search/?api=1&query=くまモンポート八代" target="_blank" class="inline-flex items-center text-matcha hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>，車程約 20 分鐘。(13:30~14:00)</p>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/yatsushiro_market.jpg" alt="伴手禮" class="w-full h-40 object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 6 -->
-                <div class="relative z-10 md:flex items-center flex-row-reverse mb-8">
-                    <div class="md:w-1/2 md:pl-12 md:text-left mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">14:00~15:00</span>
+                <!-- Item 6 (有圖片 - 熊本熊公園) -->
+                <div class="relative z-10 md:flex items-center flex-row-reverse mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pl-12 md:text-left mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-start w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">14:00~15:00</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 kumamon_park.jpg -->
+                            <img src="images/kumamon_park.jpg" alt="熊本熊公園" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-matcha rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pr-12 pl-12">
+                    <div class="md:w-1/2 md:pr-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-r-4 md:border-l-0 border-l-4 border-matcha">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap md:justify-end">港口公園 (熊本熊公園) <a href="https://www.google.com/maps/search/?api=1&query=くまモンポート八代" target="_blank" class="ml-2 text-matcha hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-2"><strong>特色：</strong> 千萬別急著上船！八代港本身就是超大景點。</p>
                             <p class="text-gray-600 text-sm leading-relaxed"><strong>必拍：</strong> 84尊表情各異的熊本熊雕像合唱團，及 6公尺高超巨大熊本熊。盡情拍照留念！</p>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/kumamon_park.jpg" alt="熊本熊公園" class="w-full h-40 object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 7 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">15:00~15:30</span>
+                <!-- Item 7 (無圖片 - 準備登船) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">15:00~15:30</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-matcha rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-matcha">
-                            <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">準備登船 - 八代港 <a href="https://www.google.com/maps/search/?api=1&query=八代港" target="_blank" class="ml-2 text-matcha hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
+                            <h3 class="text-xl font-bold mb-2 text-matcha flex items-center flex-wrap">準備登船 - 八代港 <a href="https://www.google.com/maps/search/?api=1&query=八代港" target="_blank" class="ml-2 text-matcha hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1">慢慢走回船上，結束輕鬆的一天。最後登船建議時間為 15:30。</p>
                         </div>
                     </div>
@@ -346,8 +438,7 @@
 
         <!-- ================= Station 3: 沖繩 ================= -->
         <section id="day3" class="scroll-mt-24 pt-12 border-t border-gray-300">
-            <!-- Section Header -->
-            <div class="mb-10 text-center relative">
+            <div class="mb-10 text-center relative fade-in-up">
                 <div class="inline-block bg-ruri text-white text-xs font-bold px-3 py-1 mb-3 tracking-widest">第三站</div>
                 <h2 class="text-3xl md:text-4xl font-bold text-sumi mb-2">沖繩那霸 <span class="text-xl md:text-2xl font-normal text-gray-500 ml-2">Naha</span></h2>
                 <p class="text-lg text-ruri font-bold tracking-widest">（瀨長島+波上宮）夕陽海景版</p>
@@ -367,13 +458,13 @@
 
             <!-- Timeline -->
             <div class="relative timeline-line">
-                <!-- Item 1 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">15:30~16:00</span>
+                <!-- Item 1 (無圖片 - 交通移動) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">15:30~16:00</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-ruri rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-ruri">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">下船 & 搭計程車</h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行動：</strong> 下船後直接搭計程車，前往「波上宮」<a href="https://www.google.com/maps/search/?api=1&query=波上宮" target="_blank" class="inline-flex items-center text-ruri hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>。</p>
@@ -382,27 +473,34 @@
                     </div>
                 </div>
 
-                <!-- Item 2 -->
-                <div class="relative z-10 md:flex items-center flex-row-reverse mb-8">
-                    <div class="md:w-1/2 md:pl-12 md:text-left mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">16:00~16:40</span>
+                <!-- Item 2 (有圖片 - 波上宮) -->
+                <div class="relative z-10 md:flex items-center flex-row-reverse mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pl-12 md:text-left mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-start w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">16:00~16:40</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 naminoue.jpg -->
+                            <img src="images/naminoue.jpg" alt="波上宮" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-ruri rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pr-12 pl-12">
+                    <div class="md:w-1/2 md:pr-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-r-4 md:border-l-0 border-l-4 border-ruri">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap md:justify-end">波上宮 (懸崖上的神社) <a href="https://www.google.com/maps/search/?api=1&query=波上宮" target="_blank" class="ml-2 text-ruri hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行程：</strong> 參拜沖繩總鎮守，在旁邊的海灘拍拍照。很短但經典的景點。</p>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/naminoue.jpg" alt="波上宮" class="w-full h-40 object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 3 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">16:40~17:10</span>
+                <!-- Item 3 (無圖片 - 交通移動) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">16:40~17:10</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-ruri rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-ruri">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">移動到瀨長島</h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行動：</strong> 在波上宮叫計程車，前往「瀨長島 Umikaji Terrace」<a href="https://www.google.com/maps/search/?api=1&query=瀨長島+Umikaji+Terrace" target="_blank" class="inline-flex items-center text-ruri hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>。</p>
@@ -411,28 +509,35 @@
                     </div>
                 </div>
 
-                <!-- Item 4 -->
-                <div class="relative z-10 md:flex items-center flex-row-reverse mb-8">
-                    <div class="md:w-1/2 md:pl-12 md:text-left mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">17:10~18:40</span>
+                <!-- Item 4 (有圖片 - 瀨長島) -->
+                <div class="relative z-10 md:flex items-center flex-row-reverse mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pl-12 md:text-left mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-start w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">17:10~18:40</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 senagajima.jpg -->
+                            <img src="images/senagajima.jpg" alt="瀨長島" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-ruri rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pr-12 pl-12">
+                    <div class="md:w-1/2 md:pr-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-r-4 md:border-l-0 border-l-4 border-ruri">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap md:justify-end">瀨長島 - 沖繩小希臘 <a href="https://www.google.com/maps/search/?api=1&query=瀨長島+Umikaji+Terrace" target="_blank" class="ml-2 text-ruri hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-2"><strong>特色：</strong> 白色階梯狀建築群，充滿地中海風情，可近距離看飛機起降。</p>
                             <p class="text-gray-600 text-sm leading-relaxed"><strong>活動：</strong> 找家看海的咖啡廳 (如「幸福鬆餅」)，喝飲料看海、賞夕陽 (3月日落約18:30)，非常浪漫。</p>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/senagajima.jpg" alt="瀨長島" class="w-full h-40 object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 5 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">18:40~19:10</span>
+                <!-- Item 5 (無圖片 - 交通移動) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">18:40~19:10</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-ruri rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-ruri">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">移動到國際通</h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行動：</strong> 請店家幫忙叫車或用APP叫車，前往「國際通」<a href="https://maps.app.goo.gl/WbPiAZ1s2U1nHQDT6" target="_blank" class="inline-flex items-center text-ruri hover:text-opacity-70 mx-1" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-4 h-4"></i></a>。</p>
@@ -441,30 +546,37 @@
                     </div>
                 </div>
 
-                <!-- Item 6 -->
-                <div class="relative z-10 md:flex items-center flex-row-reverse mb-8">
-                    <div class="md:w-1/2 md:pl-12 md:text-left mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">19:10~20:40</span>
+                <!-- Item 6 (有圖片 - 國際通) -->
+                <div class="relative z-10 md:flex items-center flex-row-reverse mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pl-12 md:text-left mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-start w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap mb-3 shadow-sm">19:10~20:40</span>
+                        <div class="hidden md:block w-full max-w-[260px] rounded-lg overflow-hidden shadow-md border-2 border-white bg-gray-100">
+                            <!-- 請確認您的檔名為 kokusai.jpg -->
+                            <img src="images/kokusai.jpg" alt="國際通" class="w-full h-36 object-cover hover:scale-105 transition-transform duration-700">
+                        </div>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-ruri rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pr-12 pl-12">
+                    <div class="md:w-1/2 md:pr-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-r-4 md:border-l-0 border-l-4 border-ruri">
                             <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap md:justify-end">國際通晚餐 & 採購 <a href="https://maps.app.goo.gl/WbPiAZ1s2U1nHQDT6" target="_blank" class="ml-2 text-ruri hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-2"><strong>晚餐：</strong> 旅程最後一晚，推薦吃 Steak House 88 (老牌牛排) 或 Agu豬火鍋。</p>
                             <p class="text-gray-600 text-sm leading-relaxed"><strong>採買：</strong> 飯後進行最後的伴手禮採買 (如紅芋塔、沖繩黑糖)。</p>
+                            <div class="md:hidden w-full mt-4 rounded-lg overflow-hidden shadow-sm border border-gray-100 bg-gray-100">
+                                <img src="images/kokusai.jpg" alt="國際通" class="w-full h-40 object-cover">
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Item 7 -->
-                <div class="relative z-10 md:flex items-center mb-8">
-                    <div class="md:w-1/2 md:pr-12 md:text-right mb-2 md:mb-0 pl-12 md:pl-0">
-                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap">20:40~21:00</span>
+                <!-- Item 7 (無圖片 - 準備登船) -->
+                <div class="relative z-10 md:flex items-center mb-10 timeline-item fade-in-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right mb-4 md:mb-0 pl-12 md:pl-0 flex flex-col items-start md:items-end w-full">
+                        <span class="bg-gray-100 text-sumi font-bold px-3 py-1 rounded text-sm tracking-wider inline-block whitespace-nowrap shadow-sm">20:40~21:00</span>
                     </div>
                     <div class="absolute left-3 md:left-1/2 transform -translate-x-1/2 w-5 h-5 bg-ruri rounded-full border-4 border-washi"></div>
-                    <div class="md:w-1/2 md:pl-12 pl-12">
+                    <div class="md:w-1/2 md:pl-12 pl-12 w-full">
                         <div class="bg-white p-5 rounded-lg shadow-sm border-l-4 border-ruri">
-                            <h3 class="text-xl font-bold mb-2 flex items-center flex-wrap">準備登船 - 那霸郵輪碼頭 <a href="https://www.google.com/maps/search/?api=1&query=那霸郵輪碼頭" target="_blank" class="ml-2 text-ruri hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
+                            <h3 class="text-xl font-bold mb-2 text-ruri flex items-center flex-wrap">準備登船 - 若狹或泊港 <a href="https://www.google.com/maps/search/?api=1&query=那霸郵輪碼頭" target="_blank" class="ml-2 text-ruri hover:text-opacity-70 transition-opacity" title="在 Google Maps 上查看"><i data-lucide="map-pin" class="w-5 h-5"></i></a></h3>
                             <p class="text-gray-600 text-sm leading-relaxed mb-1"><strong>行動：</strong> 搭計程車回到船上休息。最後登船建議時間為 21:00。</p>
                             <p class="text-gray-500 text-sm"><strong>車資：</strong> 約 ¥1,500~¥2,000。</p>
                         </div>
@@ -483,17 +595,38 @@
         </div>
     </footer>
 
-    <!-- Initialize Lucide Icons -->
+    <!-- Initialize Lucide Icons & Intersection Observer for Scroll Animations -->
     <script>
         lucide.createIcons();
 
-        // Smooth scrolling functionality for nav links
+        // 導覽列平滑捲動
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+
+        // 頁面捲動時觸發浮現動畫
+        document.addEventListener("DOMContentLoaded", () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: "0px 0px -15% 0px", // 提早一點觸發
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.timeline-item, .fade-in-up').forEach(item => {
+                observer.observe(item);
             });
         });
     </script>
